@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+{% block head %}
+<title>Profile</title>
+{% endblock %}
+
+{% block body%}
+<div class="container">
+
+    <h2>Profile</h2>
+    {% if user.userprofile.iamge %}
+    <img src="{{ user.userprofile.image.url }}" width="200">
+    {% endif %}
+    <br><br>
+    <p><b>Username:</b> {{ user }}</p>
+    <p><b>First Name:</b> {{ user.first_name }}</p>
+    <p><b>Last Name:</b> {{ user.last_name }}</p>
+    <p><b>Email:</b> {{ user.email }}</p>
+    
+</div>
+{% endblock %}

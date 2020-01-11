@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+
+{% block head %}
+<title>Log In | Let's Gym!</title>
+{% endblock %}
+
+{% block body %}
+<div class="container">
+    <h2>Welcome Back</h2>
+    <p>
+        Log back into your Gym account.
+    </p>
+    <br>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit" class="btn btn-outline-primary">Log In</button>
+    </form>
+</div>
+{% endblock %}

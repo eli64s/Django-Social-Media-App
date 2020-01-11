@@ -1,0 +1,53 @@
+{% extends 'base.html' %}
+
+{% block head %}
+<title>Home | Let's Gym</title>
+{% endblock %}
+
+{% block body %}
+<div class="container">
+<div class="row">
+
+    <div class="col-md-8">
+        <h2>My Feed</h2>
+        <form method="post">
+            {% csrf_token %}
+            {{ form.post }} 
+            <br>
+            <button type="submit" class="btn btn-outline-primary">Submit</button>
+        </form>
+
+        <h5>{{ text }}</h5>
+        {% for post in posts %}
+            <h5>{{ post.post }}</h5>
+            <p>Posted By {{ post.user.get_full_name }} on {{ post.created }}</p>
+        {% endfor %}
+    </div>
+
+    <div class="col-md-4">
+        <h2>Add Friends</h2>
+        {% for user in users %}
+            <a href="{% url 'accounts:view_profile_with_pk' pk=user.pk %}">
+                <h5>{{ user.username }}</h5>
+            </a>
+            {% if user not in friends %}
+            <a href"{% url 'home:change_friends' operation='add' pk=user.pk %}">
+            <button type="button" class="btn btn-outline-info btn-sm">Add Friend</button>
+            </a>
+            {% endif %}
+        {% endfor %}
+
+        <h2>Friends</h2>
+        {% for friend in friends %}
+            <a href="{% url 'accounts:view_profile_with_pk' pk=friend.pk %}">
+                <h5>{{ friend.username }}</h5>
+            </a>
+            <a href"{% url 'home:change_friends' operation='remove' pk=friend.pk %}">
+            <button type="button" class="btn btn-outline-info btn-sm">Remove Friend</button>
+            </a>
+        {% endfor %}
+    </div>
+
+</div
+</div>
+{% endblock %}

@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+
+{% block head %}
+<title>Sign Up | Let's Gym!</title>
+{% endblock %}
+
+{% block body %}
+
+<div class="container">
+
+    <h2>Find a Gym Partner Today!</h2>
+    <p>Log In | Sign Up</p>
+    <br>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button onclick="location.href='/account/login/'" type="button" 
+        class="btn btn-outline-primary">Log In</button>
+        <button type="submit" class="btn btn-outline-secondary">Sign Up</button>
+    </form>
+    
+</div>
+
+{% endblock %}
