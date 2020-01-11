@@ -6,7 +6,7 @@ from django.contrib.auth import update_session_auth_hash
 from django.contrib.auth.decorators import login_required
 
 
-# Accounts app views
+# accounts app views
 def register(request):
     if request.method == 'POST':
         form = RegistrationForm(request.POST)
@@ -65,6 +65,3 @@ def change_password(request):
         form = PasswordChangeForm(user=request.user)
         args = {'form': form}
         return render(request, 'accounts/change_password.html', args)
-
-# This command fixes tabs/spaces error
-# autopep8 -i file_name.py

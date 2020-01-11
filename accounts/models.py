@@ -9,9 +9,6 @@ class UserProfile(models.Model):
     first_name = models.CharField(max_length = 25)
     last_name = models.CharField( max_length = 25)
     email = models.CharField(max_length = 50)
-    #phone = models.IntegerField(default = 0)
-    #age = models.IntegerField()
-    #city = models.CharField(max_length = 85)
     image = models.ImageField(upload_to = 'profile_image', blank = True)
 
     def __str__(self):
