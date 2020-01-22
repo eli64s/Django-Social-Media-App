@@ -3,11 +3,13 @@ from django.shortcuts import render, redirect
 from django.contrib.auth.models import User
 from home.forms import HomeForm
 from home.models import Post, Friend 
+from django.contrib.auth.decorators import login_required
 
 # The Home App's Views
 class HomeView(TemplateView):
     template_name = 'home/home.html'
 
+    
     def get(self, request):
         form = HomeForm()
         posts = Post.objects.all().order_by('-created') # Orders the home page posts by most recently created
@@ -18,7 +20,7 @@ class HomeView(TemplateView):
         args = {'form': form, 'posts': posts, 'users': users, 'friends': friends}
         return render(request, self.template_name, args)
 
-
+    
     def post(self, request):
         form = HomeForm(request.POST) # request.post fills form with data received from post request
         if form.is_valid():

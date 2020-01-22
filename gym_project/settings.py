@@ -125,12 +125,16 @@ STATIC_URL = '/static/'
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'gym_project/media')
 
-#takes user to the home page view when they log in
-LOGIN_REDIRECT_URL = '/account/'
+# Takes user to the home page view when they log in
+LOGIN_REDIRECT_URL = '/home/'
 
 LOGIN_URL = '/account/login/'
 
 LOGIN_EXEMPT_URLS = (
     r'^account/logout/$',
-    r'^account/register/$'
+    r'^account/register/$',
+    #r'^account/reset-password/$',
+    #r'^account/reset-password/done/$',
+    #r'^account/reset-password/confirm/(?P<uidb64>[0-9A-Za-z]+)-(?P<token>.+)/$',
+    #r'^account/reset-password/complete/$',
 )

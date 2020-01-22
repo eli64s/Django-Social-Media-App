@@ -12,8 +12,6 @@ class RegistrationForm(UserCreationForm):
             'first_name',
              'last_name',
              'email',
-             #'phone',
-             #'age',
              'password1',
              'password2'
         )
@@ -23,12 +21,12 @@ class RegistrationForm(UserCreationForm):
         user.first_name = self.cleaned_data['first_name']
         user.last_name = self.cleaned_data['last_name']
         user.email = self.cleaned_data['email']
-        #user.age = self.cleaned_data['age']
 
         if commit:
             user.save()
-        
+
         return user
+
 
 class EditProfileForm(UserChangeForm):
 
@@ -37,9 +35,7 @@ class EditProfileForm(UserChangeForm):
         fields = (
             'username', 
             'first_name',
-             'last_name',
-             'email',
-             #'phone',
-             #'age',
-             'password'
+            'last_name',
+            'email',
+            'password'
         )
