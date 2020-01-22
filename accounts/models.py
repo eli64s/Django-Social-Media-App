@@ -5,11 +5,17 @@ from django.db.models.signals import post_save
 
 # The Accounts App's Models
 class UserProfileManager(models.Manager):
+    '''
+    
+    '''
     def get_queryset(self):
         return super(UserProfileManager, self).get_queryset().filter(city = 'Chicago')
 
 
 class UserProfile(models.Model): 	
+    '''
+    
+    '''
     user = models.OneToOneField(User, on_delete = models.CASCADE)
     first_name = models.CharField(max_length = 25)
     last_name = models.CharField( max_length = 25)
@@ -23,6 +29,9 @@ class UserProfile(models.Model):
     
 
 def create_profile(sender, **kwargs):
+    '''
+    
+    '''
     if kwargs['created']:
         user_profile = UserProfile.objects.create(user = kwargs['instance'])
 
