@@ -9,7 +9,7 @@
 <div class="row">
 
     <div class="col-md-8">
-        <h2>My Feed</h2>
+        <h2>{{ user.first_name }}'s Timeline</h2>
         <form method="post">
             {% csrf_token %}
             {{ form.post }} 
@@ -25,27 +25,27 @@
     </div>
 
     <div class="column mr-4">
-        <h2>Add</h2>
+        <h4>Suggested Friends</h4>
         {% for user in users %}
+            {% if not user in friends %}
             <a href="{% url 'accounts:view_profile_with_pk' pk=user.pk %}">
                 <h3>{{ user.username }}</h3>
             </a>
-            {% if not user in friends %}
             <a href="{% url 'home:change_friends' operation='add' pk=user.pk %}">
-            <button type="button" class="btn btn-default">Add Friend</button>
+            <button type="button" class="btn btn-default">Add</button>
             </a>
             {% endif %}
         {% endfor %}
     </div>
 
     <div class="column ml-4">
-        <h2>Friends</h2>
+        <h4>Friends List</h4>
         {% for friend in friends %}
             <a href="{% url 'accounts:view_profile_with_pk' pk=friend.pk %}">
                 <h3>{{ friend.username }}</h3>
             </a>
             <a href="{% url 'home:change_friends' operation='remove' pk=friend.pk %}">
-            <button type="button" class="btn btn-default">Remove Friend</button>
+            <button type="button" class="btn btn-default">Remove</button>
             </a>
         {% endfor %}
     </div>

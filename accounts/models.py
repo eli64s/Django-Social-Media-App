@@ -23,7 +23,8 @@ class UserProfile(models.Model):
     image = models.ImageField(upload_to = 'profile_image', blank = True)
 
     chicago = UserProfileManager()
-
+    objects = models.Manager()
+    
     def __str__(self):
         return self.user.username
     

@@ -24,9 +24,7 @@ class Friend(models.Model):
         '''
 
         '''
-        friend, created = cls.objects.get_or_create(
-            current_user=current_user
-        )
+        friend, created = cls.objects.get_or_create(current_user = current_user)
         friend.users.add(new_friend)
 
     @classmethod
@@ -34,7 +32,5 @@ class Friend(models.Model):
         '''
 
         '''
-        friend, created = cls.objects.get_or_create(
-            current_user=current_user
-        )
+        friend, created = cls.objects.get_or_create(current_user = current_user)
         friend.users.remove(new_friend)

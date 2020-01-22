@@ -20,7 +20,7 @@ class HomeView(TemplateView):
         form = HomeForm()
         posts = Post.objects.all().order_by('-created') # Orders the home page posts by most recently created
         users = User.objects.exclude(id = request.user.id) # Does not show logged in user on 'Add Friends'
-        friend = Friend.objects.get(current_user = request.user)
+        friend, created = Friend.objects.get_or_create(current_user = request.user)
         friends = friend.users.all()
 
         context = {'form': form, 'posts': posts, 'users': users, 'friends': friends}

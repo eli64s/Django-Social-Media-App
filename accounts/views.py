@@ -3,7 +3,7 @@ from django.shortcuts import render, redirect
 from accounts.forms import RegistrationForm, EditProfileForm
 from django.contrib.auth.models import User
 from django.contrib.auth.forms import UserChangeForm, PasswordChangeForm
-from django.contrib.auth import update_session_auth_hash
+from django.contrib.auth import update_session_auth_hash, authenticate, login
 from django.contrib.auth.decorators import login_required
 
 
@@ -17,12 +17,17 @@ def register(request):
 
         if form.is_valid():
             form.save()
-            return redirect(reverse('accounts:home'))
+            username = request.POST.get('username')
+            password = request.POST.get('password1')
+            user = authenticate(request, username = username, password = password)
+            login(request, user)
+            return redirect(reverse('home:home'))
 
     else:
         form = RegistrationForm()
-        context = {'form': form}
-        return render(request, 'accounts/reg_form.html', context)
+
+    context = {'form': form}
+    return render(request, 'accounts/reg_form.html', context)
 
 
 @login_required
