@@ -30,7 +30,7 @@
             <a href="{% url 'accounts:view_profile_with_pk' pk=user.pk %}">
                 <h5>{{ user.username }}</h5>
             </a>
-            {% if user not in friends %}
+            {% if not user in friends %}
             <a href"{% url 'home:change_friends' operation='add' pk=user.pk %}">
             <button type="button" class="btn btn-outline-info btn-sm">Add Friend</button>
             </a>
