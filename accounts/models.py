@@ -4,12 +4,12 @@ from django.db.models.signals import post_save
 
 
 # The Accounts App's Models
-class UserProfileManager(models.Manager):
-    '''
-    
-    '''
-    def get_queryset(self):
-        return super(UserProfileManager, self).get_queryset().filter(city = 'Chicago')
+#class UserProfileManager(models.Manager):
+#    '''
+
+#    '''
+#    def get_queryset(self):
+#    return super(UserProfileManager, self).get_queryset().filter(last_name = 'Salamie')
 
 
 class UserProfile(models.Model): 	
@@ -22,8 +22,8 @@ class UserProfile(models.Model):
     email = models.CharField(max_length = 50)
     image = models.ImageField(upload_to = 'profile_image', blank = True)
 
-    chicago = UserProfileManager()
-    objects = models.Manager()
+    #salamie = UserProfileManager()
+    #objects = models.Manager()
     
     def __str__(self):
         return self.user.username

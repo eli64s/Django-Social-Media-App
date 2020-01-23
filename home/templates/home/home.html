@@ -2,19 +2,23 @@
 
 {% block head %}
 <title>Home | Let's Gym</title>
+<head>
+<!--Font Awesome CDN for icons dropped in Bootstrap 4-->
+<link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+</head>
 {% endblock %}
 
 {% block body %}
 <div class="container">
 <div class="row">
 
-    <div class="col-md-8">
+    <div class="col-md-7">
         <h2>{{ user.first_name }}'s Timeline</h2>
         <form method="post">
             {% csrf_token %}
             {{ form.post }} 
             <br>
-            <button type="submit" class="btn btn-outline-primary">Submit</button>
+            <button type="submit" class="btn btn-outline-primary">Create Post</button>
         </form>
 
         <h5>{{ text }}</h5>
@@ -29,10 +33,18 @@
         {% for user in users %}
             {% if not user in friends %}
             <a href="{% url 'accounts:view_profile_with_pk' pk=user.pk %}">
-                <h3>{{ user.username }}</h3>
+                <h3>{{ user.username }}
+                {% if user.userprofile.image %}
+                <img src="{{ user.userprofile.image.url }}" class="rounded-circle" alt="Cinque Terre" height="60" width="60">
+                {% else %}
+                <img src="https://www.dts.edu/wp-content/uploads/sites/6/2018/04/Blank-Profile-Picture.jpg" 
+                class="rounded-circle" alt="Cinque Terre" height="60" width="60">
+                {% endif %}
+                </h3>
             </a>
             <a href="{% url 'home:change_friends' operation='add' pk=user.pk %}">
-            <button type="button" class="btn btn-default">Add</button>
+            <span class="fa fa-plus" data-toggle="modal" role="button" aria-hidden="true">
+            </span> Add
             </a>
             {% endif %}
         {% endfor %}
@@ -42,10 +54,18 @@
         <h4>Friends List</h4>
         {% for friend in friends %}
             <a href="{% url 'accounts:view_profile_with_pk' pk=friend.pk %}">
-                <h3>{{ friend.username }}</h3>
+                <h3>{{ friend.username }}
+                {% if friend.userprofile.image %}
+                <img src="{{ friend.userprofile.image.url }}" class="rounded-circle" alt="Cinque Terre" height="60" width="60">
+                {% else %}
+                <img src="https://www.dts.edu/wp-content/uploads/sites/6/2018/04/Blank-Profile-Picture.jpg" 
+                class="rounded-circle" alt="Cinque Terre" height="60" width="60">
+                {% endif %}
+                </h3>
             </a>
             <a href="{% url 'home:change_friends' operation='remove' pk=friend.pk %}">
-            <button type="button" class="btn btn-default">Remove</button>
+            <span class="fa fa-minus" data-toggle="modal" role="button" aria-hidden="true">
+            </span> Remove
             </a>
         {% endfor %}
     </div>
@@ -53,3 +73,4 @@
 </div
 </div>
 {% endblock %}
+
