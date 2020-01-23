@@ -5,4 +5,4 @@ I will update the README.md file as this project progresses, but in the mean tim
 
 ![HomePageImage](https://github.com/eli64s/Django-Social-Media-App/blob/master/social_app_hompage.PNG)
 
-Additionally, you may notice the main folder is named **gym_project**. The ultimate goal of this project would be creating a social platform for finding workout buddies!https://raw.githubusercontent.com/eli64s/Django-Social-Media-App/master/social_app_home.PNG
+Additionally, you may notice the main folder is named **gym_project**. The ultimate goal of this project would be creating a social platform for finding workout buddies!
