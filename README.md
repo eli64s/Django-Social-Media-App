@@ -3,6 +3,6 @@ I am developing a social media web-application with Django to deepen my understa
 
 I will update the README.md file as this project progresses, but in the mean time I attached a photo of the app's homepage. As you can see, the user can post a status to their timeline, add and remove users, and view their friends list.
 
-![HomePageImage](https://github.com/eli64s/Django-Social-Media-App/blob/master/%5BIMAGES%5Dsocial_app_hompage.PNG)
+![HomePageImage](https://github.com/eli64s/Django-Social-Media-App/blob/master/social_app_hompage.PNG)
 
 Additionally, you may notice the main folder is named **gym_project**. The ultimate goal of this project would be creating a social platform for finding workout buddies!https://raw.githubusercontent.com/eli64s/Django-Social-Media-App/master/social_app_home.PNG
