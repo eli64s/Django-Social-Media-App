@@ -10,7 +10,7 @@ from django.contrib.auth.decorators import login_required
 # The Accounts App's Views
 def register(request):
     '''
-
+    This view handles user registration, redirecting the user to the home page
     '''
     if request.method == 'POST':
         form = RegistrationForm(request.POST)
