@@ -8,14 +8,14 @@ from django.contrib.auth.decorators import login_required
 # The Home App's Views
 class HomeView(TemplateView):
     '''
-
+    Homepage class-based view
     '''
     template_name = 'home/home.html'
 
     
     def get(self, request):
         '''
-
+    
         '''
         form = HomeForm()
         posts = Post.objects.all().order_by('-created') # Orders the home page posts by most recently created
