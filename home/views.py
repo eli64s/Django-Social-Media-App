@@ -15,7 +15,7 @@ class HomeView(TemplateView):
     
     def get(self, request):
         '''
-    
+        Function that gets the user posts on the home page's timeline / newsfeed
         '''
         form = HomeForm()
         posts = Post.objects.all().order_by('-created') # Orders the home page posts by most recently created
@@ -29,7 +29,7 @@ class HomeView(TemplateView):
     
     def post(self, request):
         '''
-
+        Function to post a message on timeline / newsfeed
         '''
         form = HomeForm(request.POST) # request.post fills form with data received from post request
         if form.is_valid():
@@ -47,7 +47,7 @@ class HomeView(TemplateView):
 
 def change_friends(request, operation, pk):
     '''
-
+    Function to add / remove users from your friends list
     '''
     friend = User.objects.get(pk = pk) # Gives us the user
     

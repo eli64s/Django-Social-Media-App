@@ -33,7 +33,7 @@ def register(request):
 @login_required
 def view_profile(request, pk = None):
     '''
-
+    View that renders a user's profile page
     '''
     # Takes user to the selected friend's profile page
     if pk:
@@ -48,7 +48,7 @@ def view_profile(request, pk = None):
 @login_required
 def edit_profile(request):
     '''
-
+    View that renders the edit profile page
     '''
     if request.method == 'POST':
         form = EditProfileForm(request.POST, instance = request.user)
@@ -66,14 +66,14 @@ def edit_profile(request):
 @login_required
 def change_password(request):
     '''
-
+    View that handles user password changes 
     '''
     if request.method == 'POST':
         form = PasswordChangeForm(data = request.POST, user = request.user)
 
         if form.is_valid():
             form.save()
-            update_session_auth_hash(request, form.user) # Keeps user logged in while changing their password
+            update_session_auth_hash(request, form.user) # Keeps user logged in while changing password
             return redirect(reverse('accounts:view_profile'))
         else:
             return redirect(reverse('accounts:change_password'))
